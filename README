@@ -1,0 +1,19 @@
+THIS DOCUMENT DESCRIBES HOW TO USE THE jdo-sql-gae project
+
+This project is an attempt to be able to singly deploy a java servlet-based project
+on either a local jetty server (with a mysql database) or on Google App Engine. It slightly modifies
+the Guestbook example on at http://code.google.com/appengine/docs/java/gettingstarted/.
+
+Inspired from http://code.google.com/p/beardedgeeks/source/browse/#svn/gae-eclipse-maven-example
+
+1. To build for mySQL database : 
+ a. change the username and password in src/main/resources/datanucleus.sql.properties
+ b. make sure src/main/java/guestbook/PMF.java, on line 9, has the string "datanucleus.sql.properties"
+    as parameter to the function
+ c. mvn clean jetty:run
+
+2. To build for GAE
+ a. make sure src/main/java/guestbook/PMF.java, on line 9, has the string "datanucleus.gae.properties"
+    as parameter to the function
+ b. mvn clean gae:run -Dgae.home=YOUR_GAE_FOLDER
+
